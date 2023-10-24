@@ -1,6 +1,7 @@
 package robot
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/raphdelvillar/toy-robot/enum"
@@ -73,4 +74,8 @@ func (r *Robot) TurnRight() {
 	default:
 		log.Panic("not a valid direction")
 	}
+}
+
+func (r *Robot) Report() {
+	fmt.Println(fmt.Sprintf("%v,%v,%s", r.XAxisLocation, r.YAxisLocation, r.CurrentDirection))
 }

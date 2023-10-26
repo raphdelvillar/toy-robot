@@ -1,4 +1,4 @@
-package robot
+package models
 
 import (
 	"fmt"
@@ -11,12 +11,14 @@ type Robot struct {
 	XAxisLocation    int
 	YAxisLocation    int
 	CurrentDirection enum.Direction
+	IsPositioned     bool
 }
 
 func (r *Robot) InitialPlacement(xAxis int, yAxis int, direction enum.Direction) {
 	r.XAxisLocation = xAxis
 	r.YAxisLocation = yAxis
 	r.CurrentDirection = direction
+	r.IsPositioned = true
 }
 
 func (r *Robot) MoveForward() {

@@ -12,6 +12,8 @@ type Robot struct {
 	YAxisLocation    int
 	CurrentDirection enum.Direction
 	IsPositioned     bool
+	// belongs to Stage
+	Stage Stage
 }
 
 func (r *Robot) InitialPlacement(xAxis int, yAxis int, direction enum.Direction) {
@@ -55,7 +57,7 @@ func (r *Robot) TurnLeft() {
 		r.CurrentDirection = enum.DirectionNorth
 		break
 	default:
-		log.Panic("not a valid direction")
+		logger.Panic("not a valid direction")
 	}
 }
 
@@ -74,10 +76,13 @@ func (r *Robot) TurnRight() {
 		r.CurrentDirection = enum.DirectionSouth
 		break
 	default:
-		log.Panic("not a valid direction")
+		logger.Panic("not a valid direction")
 	}
 }
 
 func (r *Robot) Report() {
-	fmt.Println(fmt.Sprintf("%v,%v,%s", r.XAxisLocation, r.YAxisLocation, r.CurrentDirection))
+	message = fmt.Sprintf("%v,%v,%s", r.XAxisLocation, r.YAxisLocation, r.CurrentDirection)
+	logger.Print(message)
+
+	return message
 }

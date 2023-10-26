@@ -1,7 +1,10 @@
-export default function Index() {
+import React from "react";
+import Stage from "../components/Stage";
+
+const Index = () => {
   return (
-    <div>
-        <h1>Hello World!</h1>
-    </div>
+    <div><Stage /></div>
   );
 }
+
+export default Index;

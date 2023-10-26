@@ -5,10 +5,10 @@ import (
 	"log"
 )
 
-func Panic(message) {
+func Panic(message string) {
 	log.Panic(message)
 }
 
-func Print(message) {
+func Print(message string) {
 	fmt.Println(message)
 }

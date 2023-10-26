@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/raphdelvillar/toy-robot/enum"
+	"github.com/raphdelvillar/toy-robot/pkg/logger"
 )
 
 type Robot struct {
@@ -23,26 +24,40 @@ func (r *Robot) InitialPlacement(xAxis int, yAxis int, direction enum.Direction)
 	r.IsPositioned = true
 }
 
-func (r *Robot) MoveForward() {
+func (r *Robot) MoveForward() (isValid bool) {
 	switch r.CurrentDirection {
 	case enum.DirectionNorth:
+		if r.YAxisLocation == r.Stage.Height {
+			return false
+		}
 		r.YAxisLocation++
 		break
 	case enum.DirectionSouth:
+		if r.YAxisLocation == -r.Stage.Height {
+			return false
+		}
 		r.YAxisLocation--
 		break
 	case enum.DirectionEast:
+		if r.XAxisLocation == r.Stage.Width {
+			return false
+		}
 		r.XAxisLocation++
 		break
 	case enum.DirectionWest:
+		if r.XAxisLocation == -r.Stage.Width {
+			return false
+		}
 		r.XAxisLocation--
 		break
 	default:
 		log.Panic("not a valid direction")
 	}
+
+	return true
 }
 
-func (r *Robot) TurnLeft() {
+func (r *Robot) TurnLeft() (isValid bool) {
 	switch r.CurrentDirection {
 	case enum.DirectionNorth:
 		r.CurrentDirection = enum.DirectionEast
@@ -59,9 +74,11 @@ func (r *Robot) TurnLeft() {
 	default:
 		logger.Panic("not a valid direction")
 	}
+
+	return true
 }
 
-func (r *Robot) TurnRight() {
+func (r *Robot) TurnRight() (isValid bool) {
 	switch r.CurrentDirection {
 	case enum.DirectionNorth:
 		r.CurrentDirection = enum.DirectionWest
@@ -78,9 +95,11 @@ func (r *Robot) TurnRight() {
 	default:
 		logger.Panic("not a valid direction")
 	}
+
+	return true
 }
 
-func (r *Robot) Report() {
+func (r *Robot) Report() (message string) {
 	message = fmt.Sprintf("%v,%v,%s", r.XAxisLocation, r.YAxisLocation, r.CurrentDirection)
 	logger.Print(message)
 

@@ -10,4 +10,9 @@ func main() {
 		Width:  config.Global.StageWidth,
 		Height: config.Global.StageHeight,
 	}
+
+	robot := models.Robot{
+		Stage: stage,
+	}
+
 }

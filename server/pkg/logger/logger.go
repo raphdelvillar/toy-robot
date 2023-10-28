@@ -9,8 +9,12 @@ func Panic(message string) {
 	log.Panic(message)
 }
 
-func FatalError(err error) {
-	log.Panic(err.Error())
+func Fatal(err error) {
+	log.Fatal(err)
+}
+
+func FatalError(messages string, err error) {
+	log.Fatalf(messages, err)
 }
 
 func Print(message string) {

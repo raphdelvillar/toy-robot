@@ -38,7 +38,7 @@ func Load() {
 	loadEnvFile(envFile)
 
 	if err := processGlobalConfig(); err != nil {
-		logger.FatalError(err)
+		logger.Fatal(err)
 	}
 }
 
@@ -50,9 +50,7 @@ func loadEnvFile(filePath string) {
 
 	err := godotenv.Load(filePath)
 	if err != nil {
-		logger.FatalError(
-			fmt.Errorf("unable to load environment variables: %w", err),
-		)
+		logger.FatalError("unable to load environment variables", err)
 	}
 }
 
@@ -60,9 +58,7 @@ func loadEnvFile(filePath string) {
 func SetAppEnv(name string) {
 	err := os.Setenv("ENV", name)
 	if err != nil {
-		logger.FatalError(
-			fmt.Errorf("unable to set ENV environment variables: %w", err),
-		)
+		logger.FatalError("unable to set ENV environment variables", err)
 	}
 }
 

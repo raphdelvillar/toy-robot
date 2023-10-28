@@ -115,11 +115,11 @@ function handleBrowserRequest(request, responseStatusCode, responseHeaders, remi
 // app/root.jsx
 var root_exports = {};
 __export(root_exports, {
-  default: () => App
+  default: () => Root
 });
 import { Links, Meta, Outlet, ScrollRestoration, Scripts, LiveReload, useRouteError } from "@remix-run/react";
 import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
-function App() {
+function Root() {
   let error = useRouteError();
   return console.log(error), /* @__PURE__ */ jsxDEV2("html", { lang: "en", children: [
     /* @__PURE__ */ jsxDEV2("head", { children: [
@@ -184,7 +184,8 @@ function App() {
 // app/routes/_index.tsx
 var index_exports = {};
 __export(index_exports, {
-  default: () => index_default
+  default: () => index_default,
+  loader: () => loader
 });
 
 // app/components/Stage.tsx
@@ -201,7 +202,7 @@ var Table = ({ rows, columns }) => /* @__PURE__ */ jsxDEV3("table", { border: 1,
   fileName: "app/components/Stage.tsx",
   lineNumber: 5,
   columnNumber: 9
-}, this), Row = ({ key, columns }) => /* @__PURE__ */ jsxDEV3("tr", { children: Array(columns).fill(null).map((_, index) => /* @__PURE__ */ jsxDEV3(Cell, {}, index, !1, {
+}, this), Row = (props) => /* @__PURE__ */ jsxDEV3("tr", { children: Array(props.columns).fill(null).map((_, index) => /* @__PURE__ */ jsxDEV3(Cell, {}, index, !1, {
   fileName: "app/components/Stage.tsx",
   lineNumber: 23,
   columnNumber: 21
@@ -221,34 +222,51 @@ var Table = ({ rows, columns }) => /* @__PURE__ */ jsxDEV3("table", { border: 1,
   fileName: "app/components/Stage.tsx",
   lineNumber: 32,
   columnNumber: 9
-}, this), Stage = ({}) => /* @__PURE__ */ jsxDEV3("div", { children: /* @__PURE__ */ jsxDEV3("center", { children: /* @__PURE__ */ jsxDEV3(Table, { rows: 5, columns: 5 }, void 0, !1, {
-  fileName: "app/components/Stage.tsx",
-  lineNumber: 41,
-  columnNumber: 21
-}, this) }, void 0, !1, {
-  fileName: "app/components/Stage.tsx",
-  lineNumber: 41,
-  columnNumber: 13
-}, this) }, void 0, !1, {
-  fileName: "app/components/Stage.tsx",
-  lineNumber: 40,
-  columnNumber: 9
-}, this), Stage_default = Stage;
+}, this), Stage = ({ stats }) => {
+  let { height, width } = stats;
+  return /* @__PURE__ */ jsxDEV3("div", { children: /* @__PURE__ */ jsxDEV3("center", { children: /* @__PURE__ */ jsxDEV3(Table, { rows: height, columns: width }, void 0, !1, {
+    fileName: "app/components/Stage.tsx",
+    lineNumber: 41,
+    columnNumber: 21
+  }, this) }, void 0, !1, {
+    fileName: "app/components/Stage.tsx",
+    lineNumber: 41,
+    columnNumber: 13
+  }, this) }, void 0, !1, {
+    fileName: "app/components/Stage.tsx",
+    lineNumber: 40,
+    columnNumber: 9
+  }, this);
+}, Stage_default = Stage;
 
 // app/routes/_index.tsx
+import { json } from "@remix-run/node";
+
+// app/models/stage.server.tsx
+var toyRobotApiBaseUrl = process.env.TOY_ROBOT_API_BASE_URL;
+async function getStageStats() {
+  let res = await fetch(`${toyRobotApiBaseUrl}/stage/get_stats`);
+  return res = await res.json(), res;
+}
+
+// app/routes/_index.tsx
+import { useLoaderData as useLoaderData2 } from "@remix-run/react";
 import { jsxDEV as jsxDEV4 } from "react/jsx-dev-runtime";
-var Index = () => /* @__PURE__ */ jsxDEV4("div", { children: /* @__PURE__ */ jsxDEV4(Stage_default, {}, void 0, !1, {
+async function loader() {
+  return json(await getStageStats());
+}
+var Index = () => /* @__PURE__ */ jsxDEV4("div", { children: /* @__PURE__ */ jsxDEV4(Stage_default, { stats: useLoaderData2() }, void 0, !1, {
   fileName: "app/routes/_index.tsx",
-  lineNumber: 6,
+  lineNumber: 13,
   columnNumber: 10
 }, this) }, void 0, !1, {
   fileName: "app/routes/_index.tsx",
-  lineNumber: 6,
+  lineNumber: 13,
   columnNumber: 5
 }, this), index_default = Index;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-PNA73RAH.js", imports: ["/build/_shared/chunk-ZWGWGGVF.js", "/build/_shared/chunk-GIAAE3CH.js", "/build/_shared/chunk-XU7DNSPJ.js", "/build/_shared/chunk-PQPJDCWU.js", "/build/_shared/chunk-Y3MBWS2J.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-BOXFZXVX.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-MUKATU5A.js", imports: void 0, hasAction: !1, hasLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-V7FTTIF2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasErrorBoundary: !1 } }, version: "94b42c03", hmr: { runtime: "/build/_shared/chunk-Y3MBWS2J.js", timestamp: 1698480286440 }, url: "/build/manifest-94B42C03.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-PNA73RAH.js", imports: ["/build/_shared/chunk-ZWGWGGVF.js", "/build/_shared/chunk-GIAAE3CH.js", "/build/_shared/chunk-XU7DNSPJ.js", "/build/_shared/chunk-PQPJDCWU.js", "/build/_shared/chunk-Y3MBWS2J.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-BOXFZXVX.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-XFV7IIUC.js", imports: void 0, hasAction: !1, hasLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-N77535LW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasErrorBoundary: !1 } }, version: "ed925b6a", hmr: { runtime: "/build/_shared/chunk-Y3MBWS2J.js", timestamp: 1698484092478 }, url: "/build/manifest-ED925B6A.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "development", assetsBuildDirectory = "public/build", future = {}, publicPath = "/build/", entry = { module: entry_server_node_exports }, routes = {

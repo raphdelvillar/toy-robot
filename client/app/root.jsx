@@ -1,6 +1,6 @@
-import { Links, Meta, Outlet, ScrollRestoration, Scripts, LiveReload, useRouteError } from "@remix-run/react"
+import { Links, Meta, Outlet, ScrollRestoration, Scripts, LiveReload, useRouteError, useLoaderData } from "@remix-run/react"
 
-export default function App() {
+export default function Root() {
     const error = useRouteError();
     console.log(error);
 

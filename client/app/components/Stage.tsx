@@ -14,10 +14,10 @@ const Table = ({ rows, columns }) => {
     );
 };
 
-const Row = ({ key, columns }) => {
+const Row = (props) => {
     return (
         <tr>
-            {Array(columns)
+            {Array(props.columns)
                 .fill(null)
                 .map((_, index) => (
                     <Cell key={index} />
@@ -34,11 +34,11 @@ const Cell = () => {
         </td>
     );
 };
-
-const Stage = ({ }: {}) => {
+const Stage = ({ stats }) => {
+    const { height, width } = stats
     return (
         <div>
-            <center><Table rows={5} columns={5} /></center>
+            <center><Table rows={height} columns={width} /></center>
         </div>
     )
 }

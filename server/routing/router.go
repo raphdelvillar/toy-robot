@@ -18,4 +18,6 @@ func NewRouter() *gin.Engine {
 	r.POST("/api/v1/robot/move_left", robotController.MoveLeft)
 	r.POST("/api/v1/robot/move_right", robotController.MoveRight)
 	r.GET("/api/v1/robot/report", robotController.Report)
+
+	return r
 }

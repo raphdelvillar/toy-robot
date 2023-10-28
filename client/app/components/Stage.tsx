@@ -14,10 +14,10 @@ const Table = ({ rows, columns }) => {
     );
 };
 
-const Row = (columns) => {
+const Row = ({ key, columns }) => {
     return (
         <tr>
-            {Array(5)
+            {Array(columns)
                 .fill(null)
                 .map((_, index) => (
                     <Cell key={index} />

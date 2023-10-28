@@ -15,8 +15,10 @@ import (
 var Global GlobalCfg
 
 type GlobalCfg struct {
-	StageWidth  int `envconfig:"STAGE_WIDTH" required:"true" default:"5"`
-	StageHeight int `envconfig:"STAGE_HEIGHT" required:"true" default:"5"`
+	AuthServicePort int    `envconfig:"AUTH_SERVICE_PORT" required:"true"`
+	AllowedOrigins  string `envconfig:"ALLOWED_ORIGINS" required:"true"`
+	StageWidth      int    `envconfig:"STAGE_WIDTH" required:"true" default:"5"`
+	StageHeight     int    `envconfig:"STAGE_HEIGHT" required:"true" default:"5"`
 }
 
 // Load the environment variables from .env files

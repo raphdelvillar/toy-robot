@@ -30,16 +30,14 @@ const Row = (props) => {
 const Cell = () => {
     return (
         <td>
-            <center><h1>O</h1></center>
+            <center></center>
         </td>
     );
 };
 const Stage = ({ stats }) => {
     const { height, width } = stats
     return (
-        <div>
-            <center><Table rows={height} columns={width} /></center>
-        </div>
+        <Table rows={height} columns={width} />
     )
 }
 

@@ -1,4 +1,10 @@
-import { Links, Meta, Outlet, ScrollRestoration, Scripts, LiveReload, useRouteError, useLoaderData } from "@remix-run/react"
+import { cssBundleHref } from "@remix-run/css-bundle";
+import { Links, Meta, Outlet, ScrollRestoration, Scripts, LiveReload, useRouteError } from "@remix-run/react"
+import "./styles.css";
+
+export const links = () => [
+    { rel: "stylesheet", href: cssBundleHref },
+];
 
 export default function Root() {
     const error = useRouteError();

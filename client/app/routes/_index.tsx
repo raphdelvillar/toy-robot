@@ -10,7 +10,9 @@ export async function loader() {
 
 const Index = () => {
   return (
-    <div><Stage stats={useLoaderData()} /></div>
+    <div className="container">
+      <div className="stage-container"><Stage stats={useLoaderData()} /></div>
+    </div>
   );
 }
 

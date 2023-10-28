@@ -1,0 +1,19 @@
+.container {}
+
+.stage-container table {
+    border-collapse: collapse;
+}
+
+.stage-container table tbody tr {
+    height: 15vh
+}
+
+.stage-container table tbody tr:nth-child(even) td:nth-child(odd) {
+    background-color: #000000;
+    color: #fff;
+}
+
+.stage-container table tbody tr:nth-child(odd) td:nth-child(even) {
+    background-color: #000000;
+    color: #fff;
+}

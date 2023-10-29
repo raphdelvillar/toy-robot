@@ -5,7 +5,7 @@ import {Spacer} from "@nextui-org/react";
 
 const UserInput = () => {
     return (
-        <div>
+        <div className="input-container">
             <div className="flex">
                 <Chip>PLACE X,Y,F</Chip>
                 <Spacer x={2} />

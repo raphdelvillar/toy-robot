@@ -26,25 +26,25 @@ func (r *Robot) InitialPlacement(xAxis int, yAxis int, direction enum.Direction)
 func (r *Robot) MoveForward() (err error) {
 	switch r.CurrentDirection {
 	case enum.DirectionNorth:
-		if r.YAxisLocation == r.Stage.Height {
+		if r.YAxisLocation >= r.Stage.Height {
 			err = fmt.Errorf("not a valid movement")
 		}
 		r.YAxisLocation++
 		break
 	case enum.DirectionSouth:
-		if r.YAxisLocation == -r.Stage.Height {
+		if r.YAxisLocation <= -r.Stage.Height {
 			err = fmt.Errorf("not a valid movement")
 		}
 		r.YAxisLocation--
 		break
 	case enum.DirectionEast:
-		if r.XAxisLocation == r.Stage.Width {
+		if r.XAxisLocation >= r.Stage.Width {
 			err = fmt.Errorf("not a valid movement")
 		}
 		r.XAxisLocation++
 		break
 	case enum.DirectionWest:
-		if r.XAxisLocation == -r.Stage.Width {
+		if r.XAxisLocation <= -r.Stage.Width {
 			err = fmt.Errorf("not a valid movement")
 		}
 		r.XAxisLocation--

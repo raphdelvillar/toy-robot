@@ -43,9 +43,7 @@ func (ctrller controller) InitialPlacement(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, map[string]interface{}{
-		"robot": robotInstance,
-	})
+	c.JSON(http.StatusOK, robotInstance)
 }
 
 func resolveInitialPlacementParams(c *gin.Context) (*initialPlacementParams, error) {

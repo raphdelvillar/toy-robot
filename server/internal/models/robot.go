@@ -9,11 +9,11 @@ import (
 
 type Robot struct {
 	XAxisLocation    int            `json:"xAxisLocation"`
-	YAxisLocation    int            `json:"YAxisLocation"`
-	CurrentDirection enum.Direction `json:"CurrentDirection"`
-	IsPositioned     bool           `json:"IsPositioned"`
+	YAxisLocation    int            `json:"yAxisLocation"`
+	CurrentDirection enum.Direction `json:"currentDirection"`
+	IsPositioned     bool           `json:"isPositioned"`
 	// belongs to Stage
-	Stage Stage
+	Stage Stage `json:"stage"`
 }
 
 func (r *Robot) InitialPlacement(xAxis int, yAxis int, direction enum.Direction) {

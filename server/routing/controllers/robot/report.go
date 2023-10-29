@@ -15,7 +15,5 @@ func (ctrller controller) Report(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, map[string]interface{}{
-		"robot": robot,
-	})
+	c.JSON(http.StatusOK, robot)
 }

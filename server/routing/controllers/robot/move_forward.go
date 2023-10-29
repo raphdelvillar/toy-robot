@@ -23,7 +23,5 @@ func (ctrller controller) MoveForward(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, map[string]interface{}{
-		"robot": robot,
-	})
+	c.JSON(http.StatusOK, robot)
 }

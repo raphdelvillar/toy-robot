@@ -16,7 +16,7 @@ const UserInput = () => {
                 <Chip>RIGHT</Chip>
             </div>
             <Spacer x={4} />
-            <Input placeholder="Enter your command here" />
+            <Input placeholder="Type your command here and press enter" />
         </div>
     )
 }

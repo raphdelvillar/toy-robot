@@ -1,6 +1,16 @@
-.container {}
+.container { 
+    padding: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    padding: 20px;
+}
 
 .stage-container table {
+    width: 80vh;
     border-collapse: collapse;
 }
 

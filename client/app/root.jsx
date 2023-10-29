@@ -1,8 +1,11 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
 import { Links, Meta, Outlet, ScrollRestoration, Scripts, LiveReload, useRouteError } from "@remix-run/react"
+import { NextUIProvider } from "@nextui-org/react";
+import stylesheet from "./tailwind.css";
 import "./styles.css";
 
 export const links = () => [
+    { rel: "stylesheet", href: stylesheet },
     { rel: "stylesheet", href: cssBundleHref },
 ];
 
@@ -18,10 +21,12 @@ export default function Root() {
             <Meta />
         </head>
         <body>
-            <Outlet />
-            <ScrollRestoration />
-            <Scripts />
-            <LiveReload />
+            <NextUIProvider>
+                <Outlet />
+                <ScrollRestoration />
+                <Scripts />
+                <LiveReload />
+            </NextUIProvider>
         </body>
     </html>)
 }

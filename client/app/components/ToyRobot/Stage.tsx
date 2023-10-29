@@ -38,7 +38,7 @@ const Cell = (props) => {
     if (!robot.hasOwnProperty("errors")) {
         if (currentRow == robot.yAxisLocation && currentColumn == robot.xAxisLocation) {
             return (
-                <td><center><Robot /></center></td>
+                <td><center><Robot direction={robot.currentDirection} /></center></td>
             )
         }
     }

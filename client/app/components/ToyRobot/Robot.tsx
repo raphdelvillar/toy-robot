@@ -2,9 +2,11 @@ import React from "react";
 import {Image} from "@nextui-org/react";
 import robotImg from "../../assets/robot.png";
 
-const Robot = () => {
+const Robot = (props) => {
+    const { direction } = props;
+    
     return (
-        <Image src={robotImg} height={75} width={75} />
+        <Image className={`robot-${direction.toLowerCase()}`} src={robotImg} height={75} width={75} />
     )
 }
 

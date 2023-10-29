@@ -15,7 +15,6 @@ body {
 }
 
 .stage-container table {
-    border: 1px solid red;
     background-color: #fff;
     width: 90vh;
     border-collapse: collapse;
@@ -26,11 +25,11 @@ body {
 }
 
 .stage-container table tbody tr:nth-child(even) td:nth-child(odd) {
-    background-color: #000000;
+    background-color: #5A5A5A;
     color: #fff;
 }
 
 .stage-container table tbody tr:nth-child(odd) td:nth-child(even) {
-    background-color: #000000;
+    background-color: #5A5A5A;
     color: #fff;
 }

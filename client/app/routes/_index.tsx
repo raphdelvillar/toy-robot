@@ -1,7 +1,7 @@
 import React from "react";
-import Stage from "../components/Stage";
-import Log from "../components/Log";
-import UserInput from "../components/UserInput";
+import Stage from "../components/ToyRobot/Stage";
+import Log from "../components/ToyRobot/Log";
+import UserInput from "../components/ToyRobot/UserInput";
 
 import { json } from "@remix-run/node";
 import { getStageStats } from "../models/stage.server";

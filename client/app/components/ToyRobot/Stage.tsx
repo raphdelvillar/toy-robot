@@ -1,4 +1,5 @@
 import React from "react";
+import Robot from "./Robot";
 
 const Table = ({ rows, columns }) => {
     return (
@@ -30,7 +31,7 @@ const Row = (props) => {
 const Cell = () => {
     return (
         <td>
-            <center></center>
+            <center><Robot /></center>
         </td>
     );
 };

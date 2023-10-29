@@ -5,6 +5,6 @@ import (
 )
 
 type IRobotRepository interface {
-	Set(robot models.Robot) *models.Robot
-	Get() *models.Robot
+	Set(robot models.Robot) (*models.Robot, error)
+	Get() (*models.Robot, error)
 }

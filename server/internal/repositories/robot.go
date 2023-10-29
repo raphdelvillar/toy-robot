@@ -1,6 +1,7 @@
 package repositories
 
 import (
+	"fmt"
 	"sync"
 
 	"github.com/raphdelvillar/toy-robot/internal/models"
@@ -16,7 +17,7 @@ func NewRobotRepository() RobotRepository {
 	return RobotRepository{}
 }
 
-func (rbr RobotRepository) Set(robot models.Robot) *models.Robot {
+func (rbr RobotRepository) Set(robot models.Robot) (*models.Robot, error) {
 	lock.Lock()
 	defer lock.Unlock()
 	robotInstance = &robot
@@ -24,6 +25,10 @@ func (rbr RobotRepository) Set(robot models.Robot) *models.Robot {
 	return robotInstance
 }
 
-func (rbr RobotRepository) Get() *models.Robot {
+func (rbr RobotRepository) Get() (*models.Robot, error) {
+	if robotInstance == nil {
+		return nil, fmt.Errorf("Robot instance is not created")
+	}
+
 	return robotInstance
 }

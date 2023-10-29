@@ -2,7 +2,6 @@ package models
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/raphdelvillar/toy-robot/enum"
 	"github.com/raphdelvillar/toy-robot/pkg/logger"
@@ -24,7 +23,7 @@ func (r *Robot) InitialPlacement(xAxis int, yAxis int, direction enum.Direction)
 	r.IsPositioned = true
 }
 
-func (r *Robot) MoveForward() (isValid bool) {
+func (r *Robot) MoveForward() (err error) {
 	switch r.CurrentDirection {
 	case enum.DirectionNorth:
 		if r.YAxisLocation == r.Stage.Height {
@@ -51,13 +50,13 @@ func (r *Robot) MoveForward() (isValid bool) {
 		r.XAxisLocation--
 		break
 	default:
-		log.Panic("not a valid direction")
+		err = fmt.Errorf("Not a valid direction")
 	}
 
-	return true
+	return err
 }
 
-func (r *Robot) TurnLeft() (isValid bool) {
+func (r *Robot) TurnLeft() (err error) {
 	switch r.CurrentDirection {
 	case enum.DirectionNorth:
 		r.CurrentDirection = enum.DirectionEast
@@ -72,13 +71,13 @@ func (r *Robot) TurnLeft() (isValid bool) {
 		r.CurrentDirection = enum.DirectionNorth
 		break
 	default:
-		logger.Panic("not a valid direction")
+		err = fmt.Errorf("Not a valid direction")
 	}
 
-	return true
+	return err
 }
 
-func (r *Robot) TurnRight() (isValid bool) {
+func (r *Robot) TurnRight() (err error) {
 	switch r.CurrentDirection {
 	case enum.DirectionNorth:
 		r.CurrentDirection = enum.DirectionWest
@@ -93,10 +92,10 @@ func (r *Robot) TurnRight() (isValid bool) {
 		r.CurrentDirection = enum.DirectionSouth
 		break
 	default:
-		logger.Panic("not a valid direction")
+		err = fmt.Errorf("Not a valid direction")
 	}
 
-	return true
+	return err
 }
 
 func (r *Robot) Report() (message string) {

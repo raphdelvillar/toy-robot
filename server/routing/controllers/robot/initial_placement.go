@@ -35,7 +35,13 @@ func (ctrller controller) InitialPlacement(c *gin.Context) {
 		},
 	}
 
-	robotInstance := ctrller.appCtx.RobotRepository.Set(robot)
+	robotInstance, err := ctrller.appCtx.RobotRepository.Set(robot)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"errors": err.Error(),
+		})
+		return
+	}
 
 	c.JSON(http.StatusOK, map[string]interface{}{
 		"robot": robotInstance,

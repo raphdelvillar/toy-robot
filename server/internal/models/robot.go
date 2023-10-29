@@ -9,10 +9,10 @@ import (
 )
 
 type Robot struct {
-	XAxisLocation    int
-	YAxisLocation    int
-	CurrentDirection enum.Direction
-	IsPositioned     bool
+	XAxisLocation    int            `json:"xAxisLocation"`
+	YAxisLocation    int            `json:"YAxisLocation"`
+	CurrentDirection enum.Direction `json:"CurrentDirection"`
+	IsPositioned     bool           `json:"IsPositioned"`
 	// belongs to Stage
 	Stage Stage
 }

@@ -27,30 +27,30 @@ func (r *Robot) MoveForward() (err error) {
 	switch r.CurrentDirection {
 	case enum.DirectionNorth:
 		if r.YAxisLocation == r.Stage.Height {
-			return false
+			err = fmt.Errorf("not a valid movement")
 		}
 		r.YAxisLocation++
 		break
 	case enum.DirectionSouth:
 		if r.YAxisLocation == -r.Stage.Height {
-			return false
+			err = fmt.Errorf("not a valid movement")
 		}
 		r.YAxisLocation--
 		break
 	case enum.DirectionEast:
 		if r.XAxisLocation == r.Stage.Width {
-			return false
+			err = fmt.Errorf("not a valid movement")
 		}
 		r.XAxisLocation++
 		break
 	case enum.DirectionWest:
 		if r.XAxisLocation == -r.Stage.Width {
-			return false
+			err = fmt.Errorf("not a valid movement")
 		}
 		r.XAxisLocation--
 		break
 	default:
-		err = fmt.Errorf("Not a valid direction")
+		err = fmt.Errorf("not a valid direction")
 	}
 
 	return err
@@ -71,7 +71,7 @@ func (r *Robot) TurnLeft() (err error) {
 		r.CurrentDirection = enum.DirectionNorth
 		break
 	default:
-		err = fmt.Errorf("Not a valid direction")
+		err = fmt.Errorf("not a valid direction")
 	}
 
 	return err
@@ -92,7 +92,7 @@ func (r *Robot) TurnRight() (err error) {
 		r.CurrentDirection = enum.DirectionSouth
 		break
 	default:
-		err = fmt.Errorf("Not a valid direction")
+		err = fmt.Errorf("not a valid direction")
 	}
 
 	return err

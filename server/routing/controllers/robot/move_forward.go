@@ -7,14 +7,23 @@ import (
 )
 
 func (ctrller controller) MoveForward(c *gin.Context) {
-	robot := ctrller.appCtx.RobotRepository.Get()
+	robot, err := ctrller.appCtx.RobotRepository.Get()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"errors": err.Error(),
+		})
+		return
+	}
 
-	err := robot.MoveForward()
+	err = robot.MoveForward()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"errors": err.Error(),
 		})
+		return
 	}
 
-	c.JSON(http.StatusOK, map[string]interface{}{})
+	c.JSON(http.StatusOK, map[string]interface{}{
+		"robot": robot,
+	})
 }

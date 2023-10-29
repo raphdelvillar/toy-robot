@@ -22,7 +22,7 @@ func (rbr RobotRepository) Set(robot models.Robot) (*models.Robot, error) {
 	defer lock.Unlock()
 	robotInstance = &robot
 
-	return robotInstance
+	return robotInstance, nil
 }
 
 func (rbr RobotRepository) Get() (*models.Robot, error) {
@@ -30,5 +30,5 @@ func (rbr RobotRepository) Get() (*models.Robot, error) {
 		return nil, fmt.Errorf("Robot instance is not created")
 	}
 
-	return robotInstance
+	return robotInstance, nil
 }

@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (ctrller controller) MoveLeft(c *gin.Context) {
+func (ctrller controller) TurnLeft(c *gin.Context) {
 	robot, err := ctrller.appCtx.RobotRepository.Get()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, map[string]interface{}{
@@ -15,7 +15,7 @@ func (ctrller controller) MoveLeft(c *gin.Context) {
 		return
 	}
 
-	err = robot.MoveLeft()
+	err = robot.TurnLeft()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"errors": err.Error(),

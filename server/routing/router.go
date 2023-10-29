@@ -19,7 +19,7 @@ func NewRouter() *gin.Engine {
 	r.POST("/api/v1/robot/initial_placement", robotController.InitialPlacement)
 	r.POST("/api/v1/robot/move_forward", robotController.MoveForward)
 	r.POST("/api/v1/robot/turn_left", robotController.TurnLeft)
-	r.POST("/api/v1/robot/move_right", robotController.MoveRight)
+	r.POST("/api/v1/robot/turn_right", robotController.TurnRight)
 	r.GET("/api/v1/robot/report", robotController.Report)
 
 	return r

@@ -16,11 +16,17 @@ type Robot struct {
 	Stage Stage `json:"stage"`
 }
 
-func (r *Robot) InitialPlacement(xAxis int, yAxis int, direction enum.Direction) {
+func (r *Robot) InitialPlacement(xAxis int, yAxis int, direction enum.Direction) (err error) {
+	if xAxis < 0 || xAxis >= r.Stage.Width || yAxis < 0 || yAxis >= r.Stage.Height {
+		return fmt.Errorf("not a valid placement location")
+	}
+
 	r.XAxisLocation = xAxis
 	r.YAxisLocation = yAxis
 	r.CurrentDirection = direction
 	r.IsPositioned = true
+
+	return
 }
 
 func (r *Robot) MoveForward() (err error) {

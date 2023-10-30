@@ -43,9 +43,9 @@ body {
 }
 
 .stage-container .robot-east {
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
 }
 
 .stage-container .robot-west {
-    transform: rotate(90deg);
+    transform: rotate(270deg);
 }

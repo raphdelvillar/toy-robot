@@ -25,16 +25,13 @@ func (ctrller controller) InitialPlacement(c *gin.Context) {
 	}
 
 	robot := models.Robot{
-		XAxisLocation:    params.XAxisLocation,
-		YAxisLocation:    params.YAxisLocation,
-		CurrentDirection: params.Direction,
-		IsPositioned:     true,
 		Stage: models.Stage{
 			Width:  config.Global.StageWidth,
 			Height: config.Global.StageHeight,
 		},
 	}
 
+	robot.InitialPlacement(params.XAxisLocation, params.YAxisLocation, params.Direction)
 	robotInstance, err := ctrller.appCtx.RobotRepository.Set(robot)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, map[string]interface{}{

@@ -7,7 +7,7 @@ import { json } from "@remix-run/node";
 
 import { getStageStats } from "app/models/stage.server";
 import { getRobotReport, setRobotInitialPlacement, moveRobotForward, turnRobotLeft, turnRobotRight } from "app/models/robot.server";
-import { useLoaderData } from "@remix-run/react";
+import { useActionData, useLoaderData } from "@remix-run/react";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
@@ -35,11 +35,11 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       break;
   }
 
-  if (result.hasOwnProperty("errors")) return json({ success: false, data: result }, 500);
+  if (result.hasOwnProperty("errors")) return json({ success: false, data: result }, 200);
   return json({ success: true, data: result }, 200);
 }
 
-export const loader = async () => {
+export const loader = async ({ request }) => {
   return json({
     "stage": await getStageStats(),
     "robot": await getRobotReport()
@@ -47,12 +47,14 @@ export const loader = async () => {
 }
 
 const Index = () => {
+  const data = useActionData();
+
   return (
     <div className="container">
       <div className="grid-container">
         <center><div className="stage-container"><Stage data={useLoaderData()} /></div></center>
       </div >
-      <UserInput data={useLoaderData()} />
+      <UserInput data={useLoaderData()} errors={data?.data?.errors} />
     </div >
   );
 }

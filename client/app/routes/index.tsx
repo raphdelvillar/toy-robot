@@ -51,11 +51,10 @@ const Index = () => {
   return (
     <div className="container">
       <div className="grid-container">
-        <div className="grid-child stage-container"><Stage data={useLoaderData()} /></div>
-        <div className="grid-child log-container"><Log /></div>
-      </div>
-      <UserInput />
-    </div>
+        <center><div className="stage-container"><Stage data={useLoaderData()} /></div></center>
+      </div >
+      <UserInput data={useLoaderData()} />
+    </div >
   );
 }
 

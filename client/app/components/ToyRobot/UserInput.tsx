@@ -5,7 +5,7 @@ import { Chip } from "@nextui-org/react";
 import { Spacer } from "@nextui-org/react";
 import { useActionData, useNavigation } from "@remix-run/react";
 
-const UserInput = () => {
+const UserInput = ({ data }) => {
     let $form = useRef(null);
     let navigation = useNavigation()
     let actionData = useActionData();
@@ -14,16 +14,20 @@ const UserInput = () => {
         if (navigation.state === "idle" && actionData?.ok) $form.current?.reset();
     }, [navigation.state, actionData])
 
+    const displayReport = (data) => {
+        const { robot } = data;
+        if (robot && !robot.hasOwnProperty("errors")) {
+            return `${robot.xAxisLocation},${robot.yAxisLocation},${robot.currentDirection}`;
+        }
+        return `Robot is not placed yet`;
+    }
+
     return (
         <div className="input-container">
             <div className="flex">
-                <Chip>PLACE X,Y,F</Chip>
+                <Chip color="warning" variant="shadow">COMMAND LIST: [PLACE X,Y,F] [MOVE] [LEFT] [RIGHT]</Chip>
                 <Spacer x={2} />
-                <Chip>MOVE</Chip>
-                <Spacer x={2} />
-                <Chip>LEFT</Chip>
-                <Spacer x={2} />
-                <Chip>RIGHT</Chip>
+                <Chip color="primary" variant="shadow">REPORT: {displayReport(data)}</Chip>
             </div>
             <Spacer x={4} />
             <Form method="POST" ref={$form}>

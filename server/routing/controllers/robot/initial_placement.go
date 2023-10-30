@@ -4,9 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/raphdelvillar/toy-robot/config"
 	"github.com/raphdelvillar/toy-robot/enum"
-	"github.com/raphdelvillar/toy-robot/internal/models"
 )
 
 type initialPlacementParams struct {
@@ -24,22 +22,7 @@ func (ctrller controller) InitialPlacement(c *gin.Context) {
 		return
 	}
 
-	robot := models.Robot{
-		Stage: models.Stage{
-			Width:  config.Global.StageWidth,
-			Height: config.Global.StageHeight,
-		},
-	}
-
-	err = robot.InitialPlacement(params.XAxisLocation, params.YAxisLocation, params.Direction)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, map[string]interface{}{
-			"errors": err.Error(),
-		})
-		return
-	}
-
-	robotInstance, err := ctrller.appCtx.RobotRepository.Set(robot)
+	robotInstance, err := ctrller.appCtx.SetRobotInitialPlacementService.Call(params.XAxisLocation, params.YAxisLocation, params.Direction)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"errors": err.Error(),

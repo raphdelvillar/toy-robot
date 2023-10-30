@@ -1,5 +1,6 @@
 package app
 
 type Ctx struct {
-	RobotRepository IRobotRepository
+	RobotRepository                 IRobotRepository
+	SetRobotInitialPlacementService ISetRobotInitialPlacementService
 }

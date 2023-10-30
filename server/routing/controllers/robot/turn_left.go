@@ -7,17 +7,9 @@ import (
 )
 
 func (ctrller controller) TurnLeft(c *gin.Context) {
-	robot, err := ctrller.appCtx.RobotRepository.Get()
+	robot, err := ctrller.appCtx.TurnRobotLeftService.Call()
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, map[string]interface{}{
-			"errors": err.Error(),
-		})
-		return
-	}
-
-	err = robot.TurnLeft()
-	if err != nil {
-		c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"errors": err.Error(),
 		})
 		return

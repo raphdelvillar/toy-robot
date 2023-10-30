@@ -11,5 +11,8 @@ func Init() *app.Ctx {
 
 	appCtx.RobotRepository = repositories.NewRobotRepository()
 	appCtx.SetRobotInitialPlacementService = services.NewSetRobotInitialPlacementService(appCtx)
+	appCtx.MoveRobotForwardService = services.NewMoveRobotForwardService(appCtx)
+	appCtx.TurnRobotLeftService = services.NewTurnRobotLeftService(appCtx)
+	appCtx.TurnRobotRightService = services.NewTurnRobotRightService(appCtx)
 	return appCtx
 }

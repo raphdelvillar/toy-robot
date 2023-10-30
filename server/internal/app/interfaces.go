@@ -13,3 +13,15 @@ type IRobotRepository interface {
 type ISetRobotInitialPlacementService interface {
 	Call(xAxisLocation int, yAxisLocation int, direction enum.Direction) (robotInstance *models.Robot, err error)
 }
+
+type IMoveRobotForwardService interface {
+	Call() (robot *models.Robot, err error)
+}
+
+type ITurnRobotLeftService interface {
+	Call() (robot *models.Robot, err error)
+}
+
+type ITurnRobotRightService interface {
+	Call() (robot *models.Robot, err error)
+}

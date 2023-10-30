@@ -40,5 +40,9 @@ You should then be able to see `localhost:3000` for the client and `localhost:31
 - Above the user input are little helpers for the commands that are available and there is a report that updates when a user input is entered
 - Error is also displayed when there are errors, I've tried to look for a toast but not sure if there is anything compatible with remix
 
+# Testing
+I've created postman test which you can use by importing the `Toy Robot.postman_collection.json` file and it should be under the Toy Robot / Test folder
+I was going to create tests using jests for the frontend and golang mock for the backend but due to time I didn't opt to for now
+
 # Final notes
 Thank you for your time with reviewing this. Any feedback is also appreciated. Thanks

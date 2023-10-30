@@ -150,6 +150,325 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Test",
+			"item": [
+				{
+					"name": "Test #1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let toyRobotApiBaseUrl = pm.variables.get(\"TOY_ROBOT_API_BASE_URL\");\r",
+									"\r",
+									"pm.test(\"PLACE 0,0,NORTH\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        url: `${toyRobotApiBaseUrl}/robot/initial_placement`,\r",
+									"        method: \"POST\",\r",
+									"        header: {\r",
+									"            \"Content-Type\": \"application/json\",\r",
+									"        },\r",
+									"        body: {\r",
+									"            \"mode\": \"raw\",\r",
+									"            \"raw\": JSON.stringify({\r",
+									"                \"xAxisLocation\": 0,\r",
+									"                \"yAxisLocation\": 0,\r",
+									"                \"direction\": \"NORTH\"\r",
+									"            })\r",
+									"        }\r",
+									"    }, (_, res) => {\r",
+									"        pm.expect(res.code).to.equal(200);\r",
+									"        let data = res.json();\r",
+									"        pm.expect(data.xAxisLocation).to.equal(0);\r",
+									"        pm.expect(data.yAxisLocation).to.equal(0);\r",
+									"        pm.expect(data.currentDirection).to.equal(\"NORTH\");\r",
+									"    })\r",
+									"})\r",
+									"\r",
+									"pm.test(\"MOVE\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        url: `${toyRobotApiBaseUrl}/robot/move_forward`,\r",
+									"        method: \"POST\",\r",
+									"    }, (_, res) => {\r",
+									"        pm.expect(res.code).to.equal(200);\r",
+									"        let data = res.json();\r",
+									"        pm.expect(data.xAxisLocation).to.equal(0);\r",
+									"        pm.expect(data.yAxisLocation).to.equal(1);\r",
+									"        pm.expect(data.currentDirection).to.equal(\"NORTH\");\r",
+									"    })\r",
+									"})\r",
+									"\r",
+									"pm.test(\"REPORT\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        url: `${toyRobotApiBaseUrl}/robot/report`,\r",
+									"        method: \"GET\",\r",
+									"    }, (_, res) => {\r",
+									"        pm.expect(res.code).to.equal(200);\r",
+									"        let data = res.json();\r",
+									"        pm.expect(data.xAxisLocation).to.equal(0);\r",
+									"        pm.expect(data.yAxisLocation).to.equal(1);\r",
+									"        pm.expect(data.currentDirection).to.equal(\"NORTH\");\r",
+									"    })\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3100/api/v1/robot/report",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"api",
+								"v1",
+								"robot",
+								"report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test #2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let toyRobotApiBaseUrl = pm.variables.get(\"TOY_ROBOT_API_BASE_URL\");\r",
+									"\r",
+									"pm.test(\"PLACE 0,0,NORTH\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        url: `${toyRobotApiBaseUrl}/robot/initial_placement`,\r",
+									"        method: \"POST\",\r",
+									"        header: {\r",
+									"            \"Content-Type\": \"application/json\",\r",
+									"        },\r",
+									"        body: {\r",
+									"            \"mode\": \"raw\",\r",
+									"            \"raw\": JSON.stringify({\r",
+									"                \"xAxisLocation\": 0,\r",
+									"                \"yAxisLocation\": 0,\r",
+									"                \"direction\": \"NORTH\"\r",
+									"            })\r",
+									"        }\r",
+									"    }, (_, res) => {\r",
+									"        pm.expect(res.code).to.equal(200);\r",
+									"        let data = res.json();\r",
+									"        pm.expect(data.xAxisLocation).to.equal(0);\r",
+									"        pm.expect(data.yAxisLocation).to.equal(0);\r",
+									"        pm.expect(data.currentDirection).to.equal(\"NORTH\");\r",
+									"    })\r",
+									"})\r",
+									"\r",
+									"pm.test(\"LEFT\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        url: `${toyRobotApiBaseUrl}/robot/turn_left`,\r",
+									"        method: \"POST\",\r",
+									"    }, (_, res) => {\r",
+									"        pm.expect(res.code).to.equal(200);\r",
+									"        let data = res.json();\r",
+									"        pm.expect(data.xAxisLocation).to.equal(0);\r",
+									"        pm.expect(data.yAxisLocation).to.equal(0);\r",
+									"        pm.expect(data.currentDirection).to.equal(\"WEST\");\r",
+									"    })\r",
+									"})\r",
+									"\r",
+									"pm.test(\"REPORT\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        url: `${toyRobotApiBaseUrl}/robot/report`,\r",
+									"        method: \"GET\",\r",
+									"    }, (_, res) => {\r",
+									"        pm.expect(res.code).to.equal(200);\r",
+									"        let data = res.json();\r",
+									"        pm.expect(data.xAxisLocation).to.equal(0);\r",
+									"        pm.expect(data.yAxisLocation).to.equal(0);\r",
+									"        pm.expect(data.currentDirection).to.equal(\"WEST\");\r",
+									"    })\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3100/api/v1/robot/report",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"api",
+								"v1",
+								"robot",
+								"report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test #3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let toyRobotApiBaseUrl = pm.variables.get(\"TOY_ROBOT_API_BASE_URL\");\r",
+									"\r",
+									"pm.test(\"PLACE 1,2,EAST\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        url: `${toyRobotApiBaseUrl}/robot/initial_placement`,\r",
+									"        method: \"POST\",\r",
+									"        header: {\r",
+									"            \"Content-Type\": \"application/json\",\r",
+									"        },\r",
+									"        body: {\r",
+									"            \"mode\": \"raw\",\r",
+									"            \"raw\": JSON.stringify({\r",
+									"                \"xAxisLocation\": 1,\r",
+									"                \"yAxisLocation\": 2,\r",
+									"                \"direction\": \"EAST\"\r",
+									"            })\r",
+									"        }\r",
+									"    }, (_, res) => {\r",
+									"        pm.expect(res.code).to.equal(200);\r",
+									"        let data = res.json();\r",
+									"        pm.expect(data.xAxisLocation).to.equal(1);\r",
+									"        pm.expect(data.yAxisLocation).to.equal(2);\r",
+									"        pm.expect(data.currentDirection).to.equal(\"EAST\");\r",
+									"    })\r",
+									"})\r",
+									"\r",
+									"pm.test(\"MOVE\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        url: `${toyRobotApiBaseUrl}/robot/move_forward`,\r",
+									"        method: \"POST\",\r",
+									"    }, (_, res) => {\r",
+									"        pm.expect(res.code).to.equal(200);\r",
+									"        let data = res.json();\r",
+									"        pm.expect(data.xAxisLocation).to.equal(2);\r",
+									"        pm.expect(data.yAxisLocation).to.equal(2);\r",
+									"        pm.expect(data.currentDirection).to.equal(\"EAST\");\r",
+									"    })\r",
+									"})\r",
+									"\r",
+									"pm.test(\"MOVE\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        url: `${toyRobotApiBaseUrl}/robot/move_forward`,\r",
+									"        method: \"POST\",\r",
+									"    }, (_, res) => {\r",
+									"        pm.expect(res.code).to.equal(200);\r",
+									"        let data = res.json();\r",
+									"        pm.expect(data.xAxisLocation).to.equal(3);\r",
+									"        pm.expect(data.yAxisLocation).to.equal(2);\r",
+									"        pm.expect(data.currentDirection).to.equal(\"EAST\");\r",
+									"    })\r",
+									"})\r",
+									"\r",
+									"pm.test(\"LEFT\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        url: `${toyRobotApiBaseUrl}/robot/turn_left`,\r",
+									"        method: \"POST\",\r",
+									"    }, (_, res) => {\r",
+									"        pm.expect(res.code).to.equal(200);\r",
+									"        let data = res.json();\r",
+									"        pm.expect(data.xAxisLocation).to.equal(3);\r",
+									"        pm.expect(data.yAxisLocation).to.equal(2);\r",
+									"        pm.expect(data.currentDirection).to.equal(\"NORTH\");\r",
+									"    })\r",
+									"})\r",
+									"\r",
+									"pm.test(\"MOVE\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        url: `${toyRobotApiBaseUrl}/robot/move_forward`,\r",
+									"        method: \"POST\",\r",
+									"    }, (_, res) => {\r",
+									"        pm.expect(res.code).to.equal(200);\r",
+									"        let data = res.json();\r",
+									"        pm.expect(data.xAxisLocation).to.equal(3);\r",
+									"        pm.expect(data.yAxisLocation).to.equal(3);\r",
+									"        pm.expect(data.currentDirection).to.equal(\"NORTH\");\r",
+									"    })\r",
+									"})\r",
+									"\r",
+									"pm.test(\"REPORT\", function() {\r",
+									"    pm.sendRequest({\r",
+									"        url: `${toyRobotApiBaseUrl}/robot/report`,\r",
+									"        method: \"GET\",\r",
+									"    }, (_, res) => {\r",
+									"        pm.expect(res.code).to.equal(200);\r",
+									"        let data = res.json();\r",
+									"        pm.expect(data.xAxisLocation).to.equal(3);\r",
+									"        pm.expect(data.yAxisLocation).to.equal(3);\r",
+									"        pm.expect(data.currentDirection).to.equal(\"NORTH\");\r",
+									"    })\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3100/api/v1/robot/report",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"api",
+								"v1",
+								"robot",
+								"report"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TOY_ROBOT_API_BASE_URL",
+			"value": "http://localhost:3100/api/v1",
+			"type": "string"
 		}
 	]
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import Robot from "./Robot";
-import { Image } from "@nextui-org/react";
 
 const Table = (props) => {
     const { robot, rows, columns, invertedCoordinates } = props;

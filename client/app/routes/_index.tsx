@@ -39,7 +39,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   return json({ success: true, data: result }, 200);
 }
 
-export const loader = async ({ request }) => {
+export const loader = async () => {
   return json({
     "stage": await getStageStats(),
     "robot": await getRobotReport()

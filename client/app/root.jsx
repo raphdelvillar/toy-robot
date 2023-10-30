@@ -11,7 +11,7 @@ export const links = () => [
 
 export default function Root() {
     const error = useRouteError();
-    console.log(error);
+    if (error) console.log(error);
 
     return (<html lang="en">
         <head>

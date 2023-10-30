@@ -1,6 +1,6 @@
 import React from "react";
 import {Image} from "@nextui-org/react";
-import robotImg from "../../assets/robot.png";
+import robotImg from "app/assets/robot.png";
 
 const Robot = (props) => {
     const { direction } = props;

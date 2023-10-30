@@ -22,7 +22,7 @@ func main() {
 	engine := routing.NewRouter()
 	// Listen and Server in 0.0.0.0:8080, changeable by APP_PORT
 	server := &http.Server{
-		Addr:    fmt.Sprintf(":%d", config.Global.AuthServicePort),
+		Addr:    fmt.Sprintf(":%d", config.Global.ServicePort),
 		Handler: engine,
 	}
 

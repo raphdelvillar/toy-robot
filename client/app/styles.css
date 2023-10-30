@@ -1,5 +1,5 @@
 body {
-    height: 100vh;
+    height: 100%;
     background-color: #000000;
 }
 
@@ -22,7 +22,12 @@ body {
 }
 
 .stage-container table tbody tr {
-    height: 15vh
+    height: 15vh;
+}
+
+.stage-container table tbody tr .empty {
+    height: 75px;
+    width: 75px;
 }
 
 .stage-container table tbody tr:nth-child(even) td:nth-child(odd) {

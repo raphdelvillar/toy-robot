@@ -3,21 +3,13 @@ import { Form } from "@remix-run/react";
 import { Input } from "@nextui-org/react";
 import { Chip } from "@nextui-org/react";
 import { Spacer } from "@nextui-org/react";
-import { useActionData, useNavigation } from "@remix-run/react";
-
 const UserInput = ({ data }) => {
     let $form = useRef(null);
-    let navigation = useNavigation()
-    let actionData = useActionData();
-
-    useEffect(() => {
-        if (navigation.state === "idle" && actionData?.ok) $form.current?.reset();
-    }, [navigation.state, actionData])
-
+    
     const displayReport = (data) => {
         const { robot } = data;
         if (robot && !robot.hasOwnProperty("errors")) {
-            return `${robot.xAxisLocation},${robot.yAxisLocation},${robot.currentDirection}`;
+            return `The robot is currently at ${robot.xAxisLocation},${robot.yAxisLocation} facing ${robot.currentDirection}`;
         }
         return `Robot is not placed yet`;
     }

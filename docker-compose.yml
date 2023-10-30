@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  toy-robot-web:
+    container_name: homes-toy-robot-web
+    build:
+      context: ./client
+      args:
+        TOY_ROBOT_API_BASE_URL: http://toy-robot-api:3100/api/v1
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    networks:
+      - backend-network
+      - frontend-network
+    
+  toy-robot-api:
+    container_name: homes-toy-robot-api
+    build:
+      context: ./server
+    environment:
+      - ALLOWED_ORIGINS=http://localhost:3000
+      - SERVICE_PORT=3100
+      - CODE_COVERAGE=80.0
+      - STAGE_WIDTH=5
+      - STAGE_HEIGHT=5
+    ports:
+      - "3100:3100"
+    expose:
+      - "3100"
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge
+  frontend-network:
+    driver: bridge

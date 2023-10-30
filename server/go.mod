@@ -1,6 +1,6 @@
 module github.com/raphdelvillar/toy-robot
 
-go 1.23
+go 1.21.3
 
 require (
 	github.com/bytedance/sonic v1.9.1 // indirect

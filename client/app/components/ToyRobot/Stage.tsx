@@ -45,8 +45,7 @@ const Cell = (props) => {
     }
 
     return (
-        <td className={`td-${currentRow}-${currentColumn}`}>
-            <center><Image height={75} width={75} /></center>
+        <td className={`td-${currentRow}-${currentColumn} empty`}>
         </td>
     );
 };

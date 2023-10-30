@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "4cafdc2b-a599-4221-b519-0cbde3792e07",
+		"name": "Toy Robot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "567071"
+	},
+	"item": [
+		{
+			"name": "Stage",
+			"item": [
+				{
+					"name": "Get Stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3100/api/v1/stage/get_stats",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"api",
+								"v1",
+								"stage",
+								"get_stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Robot",
+			"item": [
+				{
+					"name": "Initial Placement",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"xAxisLocation\": 0,\r\n    \"yAxisLocation\": 0,\r\n    \"direction\": \"NORTH\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3100/api/v1/robot/initial_placement",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"api",
+								"v1",
+								"robot",
+								"initial_placement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3100/api/v1/robot/report",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"api",
+								"v1",
+								"robot",
+								"report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Move Forward",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3100/api/v1/robot/move_forward",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"api",
+								"v1",
+								"robot",
+								"move_forward"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Turn Left",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3100/api/v1/robot/turn_left",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"api",
+								"v1",
+								"robot",
+								"turn_left"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Turn Right",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3100/api/v1/robot/turn_right",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"api",
+								"v1",
+								"robot",
+								"turn_right"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

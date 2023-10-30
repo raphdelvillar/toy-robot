@@ -1,6 +1,5 @@
 import React from "react";
 import Stage from "app/components/ToyRobot/Stage";
-import Log from "app/components/ToyRobot/Log";
 import UserInput from "app/components/ToyRobot/UserInput";
 
 import type { ActionFunctionArgs } from "@remix-run/node";

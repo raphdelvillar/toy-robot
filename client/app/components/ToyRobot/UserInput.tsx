@@ -17,7 +17,7 @@ const UserInput = ({ data, errors }) => {
     const displayReport = (data) => {
         const { robot } = data;
         if (robot && !robot.hasOwnProperty("errors")) {
-            return `The robot is currently at ${robot.xAxisLocation},${robot.yAxisLocation} facing ${robot.currentDirection}`;
+            return `The robot is currently at xy ${robot.xAxisLocation},${robot.yAxisLocation} facing ${robot.currentDirection}`;
         }
         return `Robot is not placed yet`;
     }

@@ -1,5 +1,5 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
-import { Links, Meta, Outlet, ScrollRestoration, Scripts, LiveReload, useRouteError } from "@remix-run/react"
+import { Links, Meta, Outlet, ScrollRestoration, Scripts, LiveReload, MetaFunction, useRouteError } from "@remix-run/react"
 import { NextUIProvider } from "@nextui-org/react";
 import stylesheet from "./tailwind.css";
 import "./styles.css";
@@ -8,6 +8,12 @@ export const links = () => [
     { rel: "stylesheet", href: stylesheet },
     { rel: "stylesheet", href: cssBundleHref },
 ];
+
+export const meta: MetaFunction = () => {
+    return [
+        { title: "Toy Robot | Remix" },
+    ]
+}
 
 export default function Root() {
     const error = useRouteError();
